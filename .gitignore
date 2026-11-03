@@ -1,0 +1,9 @@
+.cache/
+.venv/
+__pycache__/
+*.pyc
+*.zip
+*.h5
+*.mat
+*.npz
+.DS_Store

@@ -1,0 +1,96 @@
+{
+  "source": {
+    "repository": "https://github.com/todiian/deep-fus",
+    "commit": "080ed97a521bbebae5bf71b3cc85a2a11c5ba682",
+    "paper_doi": "10.1109/TMI.2022.3148728",
+    "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9247015/",
+    "data_doi": "10.6084/m9.figshare.23663970.v1",
+    "model_doi": "10.6084/m9.figshare.23663979.v2",
+    "data_license": "CC BY 4.0",
+    "code_license": "Apache-2.0"
+  },
+  "archives": {
+    "test_data.zip": {
+      "url": "https://ndownloader.figshare.com/files/41528487",
+      "sha256": "28b0cba98af87110b5049222da51c33de1973ea1b3ecedea3ac8ea7b60877ed8",
+      "bytes": 426605576,
+      "doi": "10.6084/m9.figshare.23663970.v1"
+    },
+    "pretrained_models.zip": {
+      "url": "https://ndownloader.figshare.com/files/41528931",
+      "sha256": "918919f517b5ee09b07ed9b8461ac19aae36e5ccead6439ec27187fc24ede287",
+      "bytes": 408685445,
+      "doi": "10.6084/m9.figshare.23663979.v2"
+    }
+  },
+  "model_sha256": {
+    "125": "5c7957fde0819e45f6329400cd231ef7ec5954166c88d31a9224b878ff811720",
+    "100": "1a7f3a53ae150a8053dcf64706729deecc18d8856bd5e595c6939b6b06262b6b",
+    "75": "8fb70ec9942d23aac3447a83a1f7248d0f1b33067e07fa30375fc5dda865e784",
+    "50": "c46aa5292e92f17adcb28c39a1b61cd6fea2776bec081b2059d0222c6249d2bf",
+    "25": "46b4791556255cc30181e12c213961562ff4abcd5df7329d9b598e8c3ab96df0"
+  },
+  "sample_sha256": {
+    "fr1": "973badcbbcd8439d1602e2b1dca460c1b78965fc104283d9f4c2ad88ca51fe9d",
+    "fr2": "e4357404b49168ac68604ecbaa8ce6c333c99e7e6799373bab549b7548a77f64",
+    "fr3": "545c2b5d1b95d5ddc37bda111d1bfd4bbd1cd86534811c1ff5d92b5c3af7da02",
+    "fr4": "8284a16769accd5c98a383cec9f68ec356b9cbeb73eafa83012f8f44bcb3424f",
+    "fr5": "ac404893c51819d10e4a99c51d6bb0bc106b2f1e56476924c3b2f8d3a999a22d",
+    "fr6": "d3737136d4a53e1987ef1b3b4d649708e8780dbb9f4c2e0133450f6e71161ac1",
+    "fr7": "ece46dc5c57e911376811d9131a508588a19e8b1cd8183e92f9c8fc83b2ee9e5",
+    "fr8": "c857d1225da6918a3cf958a4049e6db8b4f4697223e4e453a79a8d10d91785a7",
+    "fr9": "7febd97c97f264f19659b5bf670cb6c60686c540a467d4964e3cee88f5fc3ffe",
+    "fr10": "14adc3c8d2ee31f5da71e92165784fb3becf5bb6396e5dba7d7dcd396e14e9d5",
+    "fr11": "33dd73462f6982f1acca0c914adfbc2398d7465c50251559d13e7d158cc60215",
+    "fr12": "bfe9a37b161d742a78868b794ce5ecb1c449e349e0ed83c4e9ceba6fd2320dcb",
+    "fr13": "dcfab657ac5af8bcdd1e5172b90396f9d72194b938b257eae20c43f141c50c85",
+    "fr14": "25cabd0ebe87cba8c066e84311e2bfd4517bc7c74201c2601652dc1e2d6072de",
+    "fr15": "d5ade7cf90f6e610a8f3748332a18d91eb734727c46e1f43c35483f5603882cd",
+    "fr16": "2c8189647ff7ac566538f61c94049121b96bab6239bd3bbcbf81ba8f4f988577",
+    "fr17": "0df8919ef31096ce76396012f11f3627b97b39c5798158c5b7dc8c077036e5fb",
+    "fr18": "8f1099e7945f7e2a2af6b7ac4b087dfd49f4874591b9c83a143b35e11948e206",
+    "fr19": "ecb7081e255ccb27755241f6dd5badb93e93cda958ecedcd8d4d66f0037f915c",
+    "fr20": "0f1f8b655994a473241c92c4c7640491e845667c88daf4fcaed4f4bdf2b7386f",
+    "fr21": "28302d36fbd7ee34117264c4a53eb0a4cdda128c9440b62daa3690e5e681d690",
+    "fr22": "ffee21deef3e7836af4867701b58f18f2cce5234393c35586291067013d714a2",
+    "fr23": "bc735bf6e0ef97cc5e66a403a6d5ef5980d2f27cebc2ee34b29ed8b593ad2ad5",
+    "fr24": "d3b4552b46e786e5a33cb075ad3ccbd09a4d948c79080a4c2118f8fa9816b3b7",
+    "fr25": "6ff1db8cdc164d8ff8b4426e0ed719080d7ac4e648d7bba281cf785233d0b0da",
+    "fr26": "04168aab97fbb788f41366067c8846a88af775e30a764b9506a9baab53ee0de7",
+    "fr27": "2f234d115ea40d0a66a6fa3297132437babb598716d43b5111ba0ab73cbeca26",
+    "fr28": "15e6a3d0378e9af80eee0c3a99eff156bbf4bef14eca3a2ee1ba7c235aa77129",
+    "fr29": "c2996bb9a81bc1279e778fa7eb6e598399ef120c631901523bd9cea6ae62393d",
+    "fr30": "2f1873a163f697e177c548cdfb4d25adcb1e7713907107229604b126c294596b",
+    "fr31": "c87351cdc016907ac1000fa27016856087432995556d8ab66dfcb14bad8de81e",
+    "fr32": "c1569bf0458ed1800217a00f2f38131101356f8b3a756abc230660dc068f2adf",
+    "fr33": "75b290ecd6375395d32e2edaccd411bdeaf5b949f46862915580e569adf6624c",
+    "fr34": "25303473116f9eb5ce60dc9937a18239d7fcfa1eecadcb3e84a84c021d1cb413",
+    "fr35": "b53b90724e50f0ea8ab9aeaac62ec5c1b172870605f0500bae238344f7d36685",
+    "fr36": "156c01e3bc96d0f0a222a5daaebbcfd5494198bab2a5fb0a0bfbd77732fd5d09",
+    "fr37": "8686eccffa095466facbf2e95fb06baacb58deba80bc063a824e282a08749ad7",
+    "fr38": "bfa824f2c398201a5c1782fcd0d8cc3574c63ecd8b062316535dccd4339b53d8",
+    "fr39": "6e5da1ee11467f51e7e8990a548810e95f7e930084b5c7ccc42106e634a2d208",
+    "fr40": "aa833d3563dc91e49fa98f9ee298d988c2a86f5f002b07063bb66ae2c97d64af"
+  },
+  "upstream_file_sha256": {
+    "README.md": "286096e5b678f443d76d72c11916295676c7a28e583596ff757563a0a80dc30c",
+    "LICENSE": "1889a215b515a702b7ea141cfb549e7ee4d2843adca57a5caa28300d72f3e8ad",
+    "src/predict.py": "6e753cd9f21f579aa30b229250e13e3da9af9feeab9df97f20324b052cfba740",
+    "src/utils.py": "2fba07c914f77ffdab6028d9a05eb8bab48379e26f0c3272cb6bb459d7540dc3",
+    "src/models.py": "8c8fcd88330f5ec32cb8f9fc21eefd564c78a8837d1d10ed5d94f83bb44c4e2f"
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "tensorflow": "2.16.2",
+    "keras": "3.15.1",
+    "h5py": "3.16.0",
+    "matplotlib": "3.10.8"
+  },
+  "xmean": -0.5237595494149918,
+  "xstd": 131526.6016974602,
+  "display_precision_significant_digits": 7,
+  "trained_here": false,
+  "independent_validation": false,
+  "negative_predictions_clipped_for_metrics": false
+}

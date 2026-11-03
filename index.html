@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A reproducible Deep-fUS reanalysis: can strong whole-image agreement hide signal-dependent reconstruction bias?">
+  <title>Exploratory Analyses Inspired by the Di Ianni Lab</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+  <main class="page">
+    <h1>Exploratory Analyses Inspired by the Di Ianni Lab</h1>
+    <div class="byline">
+      Cathy Liu · Biotechnology &amp; computational research · <a href="mailto:cathyliu014@gmail.com">cathyliu014@gmail.com</a><br>
+      Prepared for the Di Ianni Lab, UCSF<br>
+      Personal exploratory project, November 2026
+    </div>
+
+    <nav class="section-nav" aria-label="Demo sections">
+      <a href="#motivation">Motivation</a>
+      <a href="#a1">Image explorer</a>
+      <a href="#a2">Review priorities</a>
+      <a href="#relevance">Relevance</a>
+    </nav>
+
+    <p>The Di Ianni Lab combines ultrasound sensing and intervention. If a compressed acquisition is to inform an intervention, a good-looking reconstruction is only the beginning: <em>can strong whole-image agreement hide a bias in weaker signals?</em></p>
+    <p>I built a small review tool using the lab’s released Deep-fUS models and 40 public test pairs. It reproduces the published image-level results, then separates signal-dependent bias from its contribution to total error—so the next paired-reference check can target a specific discrepancy.</p>
+
+    <hr id="motivation">
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading">How it works</h2>
+      <p>Each sample pairs real compounded ultrasound data with a conventional power-Doppler reference. Five models reconstruct it from 125 down to 25 real frames. Compare the same pixels across models; signal bands are defined by the reference, not by the prediction or an anatomical label.</p>
+      <p class="methods-note">This is a static-image reanalysis, not a new validation dataset. Power Doppler is an indirect blood-flow-related signal, not a direct neural recording. The released files do not contain the time series needed to test stimulus responses.</p>
+    </section>
+
+    <hr id="a1">
+    <section aria-labelledby="analysis-one-heading">
+      <h2 id="analysis-one-heading">Analysis 1 — Where does the image disagree?</h2>
+      <div class="experiment">
+        <div class="exp-label">Matched comparison</div>
+        <div class="exp-title">One image, five frame budgets, the same reference</div>
+        <p>Start with the −30 to −20 dB band. Then inspect the faintest band: a large percentage bias can represent very little total reference power.</p>
+      </div>
+
+      <div class="panel">
+        <div class="controls">
+          <label>Test pair<select id="sample-select"></select></label>
+          <label>Real frames<select id="frames-select"><option value="125">125 · 75% less data</option><option value="100">100 · 80% less data</option><option value="75">75 · 85% less data</option><option value="50">50 · 90% less data</option><option value="25">25 · 95% less data</option></select></label>
+          <label>Reference signal band<select id="band-select"><option value="0">Below −40 dB</option><option value="1">−40 to −30 dB</option><option value="2" selected>−30 to −20 dB</option><option value="3">−20 to −10 dB</option><option value="4">−10 to 0 dB</option></select></label>
+        </div>
+        <div class="chips" id="suggestions"><span>Inspect:</span></div>
+        <div class="image-grid" id="hero-viz">
+          <figure><figcaption>Conventional reference</figcaption><canvas id="reference-image" width="96" height="96" role="img" aria-label="Reference image, 96 by 96 pixels"></canvas></figure>
+          <figure><figcaption>Deep-fUS reconstruction</figcaption><canvas id="prediction-image" width="96" height="96" role="img" aria-label="Reconstructed image, 96 by 96 pixels"></canvas></figure>
+          <figure><figcaption>Difference / reference peak</figcaption><canvas id="difference-image" width="96" height="96" role="img" aria-label="Signed reconstruction difference, 96 by 96 pixels"></canvas></figure>
+        </div>
+        <div class="image-legend"><span>Images: grayscale −40 → 0 dB</span><span><i class="negative-key"></i> lower &nbsp; −5% → 0 → +5% &nbsp; <i class="positive-key"></i> higher</span></div>
+        <label class="check"><input id="mask-toggle" type="checkbox"> Isolate the selected reference band in all three images</label>
+        <details class="pixel-details"><summary>Inspect a pixel or read exact values</summary><div class="pixel-controls"><label>Row <input id="pixel-row" type="number" min="1" max="96" value="48"></label><label>Column <input id="pixel-col" type="number" min="1" max="96" value="48"></label></div><p id="pixel-readout"></p><p>Click or tap an image to select a pixel. Pixel controls also work with a keyboard.</p></details>
+        <div class="readout" id="readout" aria-live="polite">Loading the matched reconstruction…</div>
+        <figcaption id="image-caption">Same reference-peak scale for both images; no per-prediction rescaling. Negative predictions are retained in analysis and clipped only for log-display. Colors in the difference image saturate at ±5% of the reference peak. Axes are pixel indices, not anatomical coordinates.</figcaption>
+      </div>
+
+      <div class="metric-row">
+        <div class="metric"><span class="metric-val" id="metric-one">—</span><span class="metric-desc">whole-image repository SSIM</span></div>
+        <div class="metric"><span class="metric-val" id="metric-two">—</span><span class="metric-desc">signed bias within selected band</span></div>
+        <div class="metric"><span class="metric-val" id="metric-three">—</span><span class="metric-desc" id="metric-three-label">band’s share of reference power</span></div>
+      </div>
+      <p class="small" id="selected-budget-note"></p>
+      <p class="small"><strong>What this lets the lab do:</strong> identify matched image/budget combinations for closer reference checks, rather than infer fidelity from one global score.</p>
+      <p class="small"><strong>Where Cathy adds value:</strong> connect a reproducible image comparison to a concrete follow-up with matched acquisitions, motion logs and physiological readouts. The code was developed with AI assistance; this is not evidence of hands-on ultrasound expertise.</p>
+    </section>
+
+    <hr id="a2">
+    <section aria-labelledby="analysis-two-heading">
+      <h2 id="analysis-two-heading">Analysis 2 — What would you review next?</h2>
+      <div class="experiment">
+        <div class="exp-label">Sensitivity, not a pass/fail rule</div>
+        <div class="exp-title">A review shortlist that changes with your tolerance</div>
+        <p>All 200 sample–budget combinations are retained. A descriptive flag means the magnitude of signed band bias exceeds the chosen tolerance; it does not mean the acquisition is unsafe or biologically inaccurate.</p>
+      </div>
+      <div class="panel">
+        <label class="range-label" for="tolerance">Review tolerance: <output id="tolerance-value">20%</output> band bias<input id="tolerance" type="range" min="5" max="100" value="20" step="5"></label>
+        <div id="cohort-summary" class="small" aria-live="polite"></div>
+        <svg id="cohort-chart" class="viz" viewBox="0 0 600 240" role="img" aria-label="Percentage of test images exceeding the selected band-bias tolerance, for each frame budget"></svg>
+        <figcaption>Same 40 files at every budget. These are descriptive image counts, not independent animals or confidence intervals. The threshold is an analyst-set sensitivity control.</figcaption>
+        <div class="table-scroll"><table id="comparison"><caption>Highest-priority cases at the selected frame budget</caption><thead><tr><th scope="col">Pair</th><th scope="col">Band bias</th><th scope="col">Abs. error*</th><th scope="col">SSIM</th></tr></thead><tbody id="review-rows"></tbody></table></div>
+        <p class="small">*Sum of absolute errors in the band, as a percentage of total reference power. Ranking uses this absolute contribution, not percentage bias alone. Click a pair to inspect it above.</p>
+        <button class="quiet-button" id="export-review" type="button">Download all 200 review rows (CSV)</button>
+      </div>
+      <p id="main-finding"></p>
+      <details><summary>Check the reproduced image-level results</summary><div class="table-scroll"><table><caption>Mean across the 40 released test pairs</caption><thead><tr><th>Real frames</th><th>Data reduction</th><th>Repository SSIM</th><th>NMSE</th></tr></thead><tbody id="reproduction-rows"></tbody></table></div><p class="small">Reproduction of the released models on the released test set—not independent validation. SSIM follows the repository’s fixed <code>max_val=1</code>, although native reference values can exceed 1. NMSE is summed squared error divided by summed squared reference.</p></details>
+    </section>
+
+    <hr id="relevance">
+    <section aria-labelledby="relevance-heading">
+      <h2 id="relevance-heading">Why this matters for the lab</h2>
+      <p>Reliable sensing matters when ultrasound measurements are used to guide intervention. This reanalysis asks a narrower question than “does the image look right?”: where does compression change the signal, and is that discrepancy substantial or merely large relative to a tiny denominator?</p>
+      <p>My proposed next check would pair short and conventional acquisitions in repeated, controlled stimulus trials. Include sham trials, motion annotations and acquisition timing; compare response amplitude and timing in predefined regions. A discrepancy that persists without motion would motivate reconstruction/calibration checks. One confined to motion or timing changes would point to acquisition controls. Neither explanation can be resolved by these static files.</p>
+
+      <h2>What I would bring</h2>
+      <p>My work spans practical preclinical research and computational modelling of epilepsy and neurostimulation. I want to understand how minimally invasive measurements can reveal meaningful neural states and inform precise intervention. I would bring careful experimental records, quantitative comparisons and a habit of connecting an analysis to the next test—while learning the lab’s ultrasound methods.</p>
+
+      <h2>Methods note</h2>
+      <p class="methods-note">The <a href="https://github.com/todiian/deep-fus/tree/080ed97a521bbebae5bf71b3cc85a2a11c5ba682">official code</a>, <a href="https://doi.org/10.6084/m9.figshare.23663970.v1">test data</a> and <a href="https://doi.org/10.6084/m9.figshare.23663979.v2">models</a> accompany <a href="https://doi.org/10.1109/TMI.2022.3148728">Di Ianni &amp; Airan (2022)</a>. Five pretrained networks were rerun without retraining. The conventional reconstruction is a comparator, not absolute physiological ground truth. Forty file IDs have no released animal/session mapping; no independence, anatomical segmentation or temporal-response claim is made.</p>
+      <details><summary>Definitions, reproducibility and limits</summary>
+        <p class="methods-note">Reference-relative signal is 10 log₁₀(reference / reference peak). Bands use lower-inclusive, upper-exclusive boundaries, except the top band includes the peak. Signed band bias is 100 × Σ(prediction − reference) / Σreference within that band; it can cancel opposite errors. The separate absolute-error contribution uses Σ|prediction − reference| divided by whole-image reference power. All quantitative metrics retain negative predictions.</p>
+        <p class="methods-note">125, 100, 75, 50 and 25 real frames correspond to 75, 80, 85, 90 and 95% less beamformed data relative to 250 complex frames. Different pretrained models are used at each budget: this is not a controlled causal test of adding frames, nor a claim about equal time savings. Display arrays are rounded; numerical metrics use unrounded inference output.</p>
+        <p class="methods-note">To reuse this on a second dataset, retain matched reference/prediction IDs, units, frame budgets and normalization. Physiological interpretation additionally needs animal/session IDs, stimulus logs, timestamps and repeated trials. The tolerance here has not been calibrated to any biological or clinical outcome.</p>
+        <p class="methods-note"><a href="https://github.com/liuzhitong330/diianni-lab-demo">Runnable code &amp; English walkthrough</a> · <a href="analysis.json">Analysis JSON</a> · <a href="metrics.csv">Full metrics CSV</a> · <a href="PROVENANCE.json">Source checksums</a>. Public data/model derivatives are CC BY 4.0; code licensing and attribution are in the repository. AI-assisted implementation; not affiliated with or endorsed by the lab.</p>
+      </details>
+    </section>
+
+    <footer>
+      Cathy Liu · <a href="mailto:cathyliu014@gmail.com">cathyliu014@gmail.com</a> · <a href="tel:+14152163799">415-216-3799</a><br>
+      Epilepsy neurostimulation project, <a href="https://arxiv.org/abs/2606.04339">arXiv:2606.04339</a>
+    </footer>
+  </main>
+
+  <noscript><p>This explorer requires JavaScript. The <a href="metrics.csv">full metrics CSV</a> and <a href="https://github.com/liuzhitong330/diianni-lab-demo">README</a> remain available.</p></noscript>
+
+  <script src="data.js?v=1"></script>
+  <script src="app.js?v=1"></script>
+</body>
+</html>

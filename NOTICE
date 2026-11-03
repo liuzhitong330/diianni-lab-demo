@@ -1,0 +1,35 @@
+Sparse sensing, matched review — an AI-assisted reanalysis by Cathy Liu, 2026.
+
+The inference preprocessing and repository-defined SSIM/NMSE follow:
+Deep-fUS, Copyright 2021 Tommaso Di Ianni, Apache License 2.0.
+https://github.com/todiian/deep-fus
+Pinned commit: 080ed97a521bbebae5bf71b3cc85a2a11c5ba682
+
+Changes in this project: source-ID-preserving loading; download and model
+integrity checks; exhaustive reference-defined intensity bands; unclipped signed
+and absolute error diagnostics; compact browser data; review export; tests and
+plain-language documentation. The upstream models are not retrained.
+
+Data and pretrained model attribution (CC BY 4.0):
+Di Ianni, Tommaso (2023). Test data. figshare. Dataset.
+https://doi.org/10.6084/m9.figshare.23663970.v1
+Di Ianni, Tommaso (2023). Pre-trained models. figshare. Dataset.
+https://doi.org/10.6084/m9.figshare.23663979.v2
+License: https://creativecommons.org/licenses/by/4.0/
+
+The samples/*.json, analysis.json, data.js metric payload and metrics.csv are
+derived from these sources. Changes include model inference, metric calculation,
+format conversion and seven-significant-digit rounding of image values for
+display. Attribution does not imply endorsement by Tommaso Di Ianni, the lab,
+UCSF, Stanford, or any employer. Original large archives and model weights are
+not included in this repository.
+
+Publication:
+Di Ianni, T. and Airan, R. D. (2022). Deep-fUS: A Deep Learning Platform for
+Functional Ultrasound Imaging of the Brain Using Sparse Data.
+IEEE Transactions on Medical Imaging, 41(7), 1813–1825.
+https://doi.org/10.1109/TMI.2022.3148728
+
+Code in this repository is Apache-2.0; derived source data retain CC BY 4.0.
+No paper figures, private application material, credentials, or CV are included.
+This is research exploration, not a clinically or experimentally validated tool.
